@@ -1,12 +1,13 @@
 package com.sitronnier.tests 
 {
-	import org.robotlegs.base.ContextEvent;
-	import org.robotlegs.mvcs.Mediator;
+	import com.sitronnier.tests.events.TestEvent;
+
+	import org.robotlegs.utilities.modular.mvcs.ModuleMediator;
 
 	/**
 	 * @author sitronnier.com aka laurent prodon
 	 */
-	public class BaseMediator extends Mediator 
+	public class BaseMediator extends ModuleMediator 
 	{
 		public function BaseMediator()
 		{
@@ -16,6 +17,7 @@ package com.sitronnier.tests
 		{
 			trace(this + " onRegister");
 			
+			eventMap.mapListener(moduleDispatcher, TestEvent.TEST, redispatchInternally);
 //			eventMap.mapListener(eventDispatcher, ContextEvent.SHUTDOWN, listener)
 		}
 

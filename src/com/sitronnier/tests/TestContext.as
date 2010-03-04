@@ -1,25 +1,27 @@
 package com.sitronnier.tests 
 {
 	import com.sitronnier.tests.commands.ModelAccessCommand;
-	import com.sitronnier.tests.models.TestModel;
 	import com.sitronnier.tests.commands.TestCommand;
-	import org.robotlegs.base.ContextEvent;
+	import com.sitronnier.tests.events.TestEvent;
+	import com.sitronnier.tests.models.TestModel;
 	import com.sitronnier.tests.views.TestMediator;
 	import com.sitronnier.tests.views.TestView;
-	import org.robotlegs.mvcs.Context;
+
+	import org.robotlegs.base.ContextEvent;
+	import org.robotlegs.utilities.modular.mvcs.ModuleContext;
 
 	import flash.display.DisplayObjectContainer;
 
 	/**
 	 * @author sitronnier.com aka laurent prodon
 	 */
-	public class TestContext extends Context 
+	public class TestContext extends ModuleContext 
 	{
 		private var _testview : TestView;
 
-		public function TestContext(contextView : DisplayObjectContainer = null, autoStartup : Boolean = true)
+		public function TestContext(contextView : DisplayObjectContainer = null)
 		{
-			super(contextView, autoStartup);
+			super(contextView);
 		}
 
 		override public function startup() : void 
@@ -31,6 +33,7 @@ package com.sitronnier.tests
 			
 			commandMap.mapEvent(ContextEvent.SHUTDOWN, TestCommand, ContextEvent);
 			commandMap.mapEvent(ContextEvent.STARTUP_COMPLETE, ModelAccessCommand, ContextEvent);
+			commandMap.mapEvent(TestEvent.TEST, ModelAccessCommand, TestEvent);
 			
 			// this can only be garbage collected if using the latest version of SwitfSuspender
 			injector.mapSingleton(TestModel);

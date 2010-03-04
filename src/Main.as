@@ -1,5 +1,8 @@
 package  
 {
+	import com.sitronnier.tests.events.TestEvent;
+	import org.robotlegs.utilities.modular.base.ModuleEventDispatcher;
+	import flash.events.EventDispatcher;
 	import com.bit101.components.VBox;
 	import flash.events.MouseEvent;
 	import com.bit101.components.PushButton;
@@ -13,6 +16,7 @@ package
 	public class Main extends Sprite 
 	{
 		private var _base : Base;
+		private var _moduleDispatcher : ModuleEventDispatcher;
 
 		public function Main()
 		{
@@ -24,12 +28,20 @@ package
 			var vb:VBox = new VBox(this, 0, 0);			
 			var addBt:PushButton = new PushButton(vb, 0, 0, "Add context", _onAddClick);
 			var removeBt:PushButton = new PushButton(vb, 0, 0, "Remove context", _onRemoveClick);
+			var testBt:PushButton = new PushButton(vb, 0, 0, "Test model access", _onTestClick);
+			
+			_moduleDispatcher = new ModuleEventDispatcher();
 		} 
+
+		private function _onTestClick(event:MouseEvent) : void 
+		{
+			_moduleDispatcher.dispatchEvent(new TestEvent(TestEvent.TEST));
+		}
 
 		private function _onAddClick(event:MouseEvent) : void 
 		{
 			if (_base != null) return;
-			_base = new Base();	
+			_base = new Base(_moduleDispatcher);	
 			addChild(_base);
 		}	
 		
