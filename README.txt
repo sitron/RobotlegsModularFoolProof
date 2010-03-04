@@ -12,3 +12,7 @@ There is no visual output (only a few buttons), check trace output. If working y
 - when clicking on "Test Model", one trace for each model (one per context here)
 
 It seems to work perfectly!
+
+References:
+Stray RL modular version: http://github.com/Stray/robotlegs-utilities-Modular
+SwiftSuspender beta download: http://github.com/tschneidereit/SwiftSuspenders/downloads
