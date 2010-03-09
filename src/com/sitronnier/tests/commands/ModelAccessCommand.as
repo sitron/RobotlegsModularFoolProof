@@ -17,7 +17,7 @@ package com.sitronnier.tests.commands
 
 		override public function execute() : void 
 		{
-			model.count = 0;
+			model.count();
 		}
 	}
 }

@@ -1,7 +1,7 @@
 package com.sitronnier.tests 
 {
 	import com.sitronnier.tests.commands.ModelAccessCommand;
-	import com.sitronnier.tests.commands.TestCommand;
+	import com.sitronnier.tests.commands.DisposeCommand;
 	import com.sitronnier.tests.events.TestEvent;
 	import com.sitronnier.tests.models.TestModel;
 	import com.sitronnier.tests.views.TestMediator;
@@ -31,7 +31,7 @@ package com.sitronnier.tests
 			
 			mediatorMap.mapView(TestView, TestMediator);			
 			
-			commandMap.mapEvent(ContextEvent.SHUTDOWN, TestCommand, ContextEvent);
+			commandMap.mapEvent(ContextEvent.SHUTDOWN, DisposeCommand, ContextEvent);
 			commandMap.mapEvent(ContextEvent.STARTUP_COMPLETE, ModelAccessCommand, ContextEvent);
 			commandMap.mapEvent(TestEvent.TEST, ModelAccessCommand, TestEvent);
 			

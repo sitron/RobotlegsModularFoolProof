@@ -6,12 +6,12 @@ package com.sitronnier.tests.commands
 	/**
 	 * @author sitronnier.com aka laurent prodon
 	 */
-	public class TestCommand extends Command 
+	public class DisposeCommand extends Command 
 	{
 		[Inject]
 		public var model:TestModel;
 		
-		public function TestCommand()
+		public function DisposeCommand()
 		{
 		}
 

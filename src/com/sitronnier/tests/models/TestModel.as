@@ -7,7 +7,7 @@ package com.sitronnier.tests.models
 	 */
 	public class TestModel extends Actor 
 	{
-		private var _count : int;
+		private var _count : int = 0;
 
 		public function TestModel()
 		{
@@ -19,10 +19,10 @@ package com.sitronnier.tests.models
 			trace(this + " dispose");	
 		} 
 		
-		public function set count(n:int):void
+		public function count():void
 		{
-			_count = n;	
-			trace("count: " + _count);
+			_count++;	
+			trace("model is alive, count is: " + _count);
 		} 
 	}
 }
